@@ -1,0 +1,70 @@
+{% assign ll = linklists[section.settings.menu] %}
+
+<header
+  class="header"
+  role="banner"
+  data-section-id="{{ section.id }}"
+  data-section-type="header"
+>
+
+<div class="div_header_cart">
+  <a href="/" itemprop="url" title="{{ shop.name }}">
+    {% render 'header-logo' %}
+  </a>
+
+  <a
+    href="/cart"
+    class="header-cart {% if cart.item_count > 0 %} has-items{% endif %}"
+    data-router-disabled
+    data-ajax-cart-toggle
+  >
+      Cart <span data-cart-count>{{ cart.item_count }}</span>
+  </a>
+</div>
+
+<!--
+<marquee direction="left">
+  <h1 class="header1" data-ix="move">APE EDITIONS APE EDITIONS APE EDITIONS</h1>
+</marquee>
+-->
+
+<div class="div_header">
+    <div class="div_marquee_container marquee">
+      <span class="div_header1 marquee_swap_part">
+        <h1 class="heading1" data-ix="move">APE EDITIONS APE EDITIONS APE EDITIONS&nbsp;</h1>
+      </span>
+      <span class="div_header1">
+        <h1 class="heading1" data-ix="move">APE EDITIONS APE EDITIONS APE EDITIONS&nbsp;</h1>
+      </span>
+    </div>
+</div>
+
+<div class="div_subheader">
+  <div class="div_marquee_container2 marquee2">
+    <span class="div_subheader1 marquee_swap_part2">
+      <h2 class="heading2">&nbsp;CERTIFIED FINE ART PRINTS&nbsp;</h2><img src="/assets/Group.svg" loading="lazy" alt="" class="checkmark_stamp">
+      <h2 class="heading2">&nbsp;CERTIFIED FINE ART PRINTS&nbsp;</h2><img src="/assets/Group.svg" loading="lazy" alt="" class="checkmark_stamp">
+      <h2 class="heading2">&nbsp;CERTIFIED FINE ART PRINTS&nbsp;</h2><img src="/assets/Group.svg" loading="lazy" alt="" class="checkmark_stamp">
+    </span>
+    <span class="div_subheader1">
+      <h2 class="heading2">&nbsp;CERTIFIED FINE ART PRINTS&nbsp;</h2><img src="/assets/Group.svg" loading="lazy" alt="" class="checkmark_stamp">
+      <h2 class="heading2">&nbsp;CERTIFIED FINE ART PRINTS&nbsp;</h2><img src="/assets/Group.svg" loading="lazy" alt="" class="checkmark_stamp">
+      <h2 class="heading2">&nbsp;CERTIFIED FINE ART PRINTS&nbsp;</h2><img src="/assets/Group.svg" loading="lazy" alt="" class="checkmark_stamp">
+    </span>
+  </div>
+</div>
+
+</header>
+
+{% schema %}
+  {
+    "name": "Header",
+    "settings": [
+      {
+        "type": "link_list",
+        "id": "menu",
+        "label": "Menu"
+      }
+    ]
+  }
+{% endschema %}

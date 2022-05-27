@@ -1,0 +1,21 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Cadaver",
+    "theme_version": "2.0.0",
+    "theme_author": "Stefan Bowerman",
+    "theme_support_url": "https:\/\/github.com\/stefbowerman\/cadaver",
+    "theme_documentation_url": "https:\/\/github.com\/stefbowerman\/cadaver"
+  },
+  {
+    "name": "Favicon",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon Image",
+        "info": "Should be at least 32px x 32px"
+      }
+    ]
+  }
+]

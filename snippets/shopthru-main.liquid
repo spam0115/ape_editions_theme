@@ -1,0 +1,71 @@
+<script>
+  const getChildElementIndex = (node) =>
+    node && Array.prototype.indexOf.call(node.parentNode.children, node);
+  const shopthruData = document.getElementById("st_product");
+  let st_btnCart,
+    st_btnCartParent,
+    st_btnCartParentIndex,
+    st_btnPay,
+    st_btnPayParent,
+    st_btnPayParentIndex;
+  if (shopthruData) {
+    let {
+      shopthruCampaignIds,
+      shopthruCampaignType,
+      shopthruMaxDiscount,
+      shopthruProductId,
+    } = shopthruData?.dataset;
+    let st_buttons = document.getElementsByTagName("button");
+
+    st_buttons = [...st_buttons];
+    let st_btnCartIndex = st_buttons.findIndex((btn) => btn.name == "add");
+    if (st_btnCartIndex < 0 || !st_btnCartIndex)
+      st_btnCartIndex = st_buttons.findIndex((btn) =>
+        btn.textContent.toLowerCase().includes("add to cart")
+      );
+    st_btnCart = st_buttons[st_btnCartIndex];
+    st_btnCartParent = st_btnCart?.parentNode;
+    st_btnCartParentIndex = getChildElementIndex(st_btnCart);
+    st_btnPay = document.querySelector(".shopify-payment-button");
+    st_btnPayParent = st_btnPay?.parentNode;
+    st_btnPayParentIndex = getChildElementIndex(st_btnPay);
+
+    if (shopthruCampaignIds && shopthruCampaignType) {
+      if (shopthruCampaignType == "full") {
+        st_btnCart && (st_btnCart.disabled = true);
+      }
+      let st_btnCartStyles = st_btnCart?.classList;
+      st_btnCartStyles && (st_btnCartStyles = [...st_btnCartStyles]);
+      const st_announcementText = document.createElement("p");
+      st_announcementText.classList.add("shopthru-announce");
+
+      st_announcementText.innerHTML =
+        shopthruCampaignType == "full"
+          ? `This product is reserved for specific token holders. To see if you qualify, click on <span style="font-weight:bold">"Connect Wallet"</span>.`
+          : shopthruCampaignType == "discount"
+          ? `You may qualify for <span style="font-weight:bold">discounts of up to ` +
+            shopthruMaxDiscount +
+            `%</span> on this product. To see if you qualify,<span style="font-weight:bold">"Connect Wallet"</span>.`
+          : null;
+      const st_connectButton = document.createElement("button");
+      st_connectButton.disabled = true;
+      st_connectButton.id = "shopthru-connect";
+      st_connectButton.innerText = "Connect Wallet";
+      st_connectButton.classList.add(...st_btnCartStyles);
+      st_connectButton.type = "button";
+      st_btnCartParent.prepend(st_connectButton);
+      st_btnCartParent.parentElement.insertBefore(
+        st_announcementText,
+        st_btnCartParent
+      );
+    }
+
+    setTimeout(() => {
+      if (shopthruCampaignType == "full") {
+        st_btnCart && (st_btnCart.disabled = false);
+        st_btnCart && st_btnCartParent.removeChild(st_btnCart);
+        st_btnPay && st_btnPayParent.removeChild(st_btnPay);
+      }
+    }, 1000);
+  }
+</script>
