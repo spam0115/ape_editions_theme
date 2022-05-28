@@ -770,10 +770,10 @@ checkmark_stamp {
 }
 
 .footer {
-    position: fixed;
+    /* position: fixed; */
     bottom: 4em;
     display: block;
-    overflow: hidden;
+    /* overflow: hidden; */
     width: 100%;
     min-height: 100px;
 }
