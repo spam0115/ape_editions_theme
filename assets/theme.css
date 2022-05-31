@@ -592,19 +592,19 @@ checkmark_stamp {
 }
 
 .marquee {
-    animation: marquee 40s linear infinite;
+    animation: marquee 50s linear infinite;
 }
 
 .marquee_swap_part {
-    animation: marquee_swap 40s linear infinite;
+    animation: marquee_swap 50s linear infinite;
 }
 
 .marquee2 {
-    animation: marquee 20s linear infinite;
+    animation: marquee 30s linear infinite;
 }
 
 .marquee_swap_part2 {
-    animation: marquee_swap 20s linear infinite;
+    animation: marquee_swap 30s linear infinite;
 }
 
 @keyframes marquee {
@@ -673,6 +673,17 @@ checkmark_stamp {
     position: static;
     white-space: nowrap;
 }
+
+.heading_big_blue {
+    color: #000; /* Fallback for older browsers */
+    color: rgba(0, 0, 0, 0);
+    font-family: "Suisseintl webl", sans-serif;
+    font-size: 32vh;
+    font-weight: 900;
+    line-height: 32vh;
+    -webkit-text-stroke: 5px blue;
+}
+
 
 .div_subheader {
     overflow: hidden;
