@@ -592,19 +592,19 @@ checkmark_stamp {
 }
 
 .marquee {
-    animation: marquee 50s linear infinite;
+    animation: marquee 100s linear infinite;
 }
 
 .marquee_swap_part {
-    animation: marquee_swap 50s linear infinite;
+    animation: marquee_swap 100s linear infinite;
 }
 
 .marquee2 {
-    animation: marquee 30s linear infinite;
+    animation: marquee 60s linear infinite;
 }
 
 .marquee_swap_part2 {
-    animation: marquee_swap 30s linear infinite;
+    animation: marquee_swap 60s linear infinite;
 }
 
 @keyframes marquee {
