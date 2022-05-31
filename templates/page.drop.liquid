@@ -12,7 +12,19 @@
 <div class="heading-3">
 <h3>EXCLUSIVE EDITION</h3>
 </div>
-<p class="article">[inventory here]</p>
+ 
+<p class="article">
+  
+  
+   {% for t in product.tags %}
+     {% if t contains 'Exclusive Edition' %}     
+            <div class="product__label--bulk-buy"><span>Bulk Buy</span></div>      
+     {% endif %}
+  {% endfor %}
+  
+  
+  
+  </p>
 <br />
 <div class="heading-3">
 <h3>COLLECTOR’S EDITION</h3>
