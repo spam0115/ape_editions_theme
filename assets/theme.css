@@ -591,6 +591,10 @@ checkmark_stamp {
     /* animation: marquee 10s linear infinite; */
 }
 
+.header-cart {
+
+}
+
 .marquee {
     animation: marquee 100s linear infinite;
 }

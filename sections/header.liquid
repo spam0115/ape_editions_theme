@@ -12,12 +12,16 @@
     {% render 'header-logo' %}
   </a>
 
+  <img src="https://cdn.shopify.com/s/files/1/0640/2788/5809/files/icon_search.svg?v=1654023035" alt="search" />
+  <img src="https://cdn.shopify.com/s/files/1/0640/2788/5809/files/icon_ape.svg?v=1654023035" alt="ape icon" />
+
   <a
     href="/cart"
     class="header-cart {% if cart.item_count > 0 %} has-items{% endif %}"
     data-router-disabled
     data-ajax-cart-toggle
   >
+      <img src="https://cdn.shopify.com/s/files/1/0640/2788/5809/files/icon_shoppingbag.svg?v=1654023035" alt="shopping bag" />
       Cart <span data-cart-count>{{ cart.item_count }}</span>
   </a>
 </div>
