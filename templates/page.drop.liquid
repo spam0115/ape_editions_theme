@@ -16,11 +16,11 @@
 <p class="article">
   
   
-   {% for t in product.tags %}
-     {% if t contains 'Exclusive Edition' %}     
-            <div class="product__label--bulk-buy"><span>Bulk Buy</span></div>      
-     {% endif %}
-  {% endfor %}
+{% for product in collections.all.products %}   
+{% if product.tags contains "Exclusive" %} 
+ {% include 'product-list-item' %}  
+{% endif %}
+{% endfor %}
   
   
   
