@@ -23,7 +23,7 @@
                 <div class="product-list product-list--collection">
                     {% for product in collections.all.products %}
                         {% if product.tags contains "Exclusive Edition" and product.available == true %}
-                            {% include 'product-detail-form' %}
+                            {% include 'shopthru-product-form' %}
                         {% endif %}
                     {% endfor %}
                 </div>
