@@ -1,0 +1,60 @@
+<div class="div_header">
+<div class="div_marquee_container marquee"><span class="div_header1 marquee_swap_part"> <span class="heading_big_blue" data-ix="move">1/AE-1/AE-1/AE-1/AE-1/AE-1/AE- </span> </span> <span class="div_header1"> <span class="heading_big_blue" data-ix="move">1/AE-1/AE-1/AE-1/AE-1/AE-1/AE- </span> </span></div>
+</div>
+<div class="layout-content-wrapper">
+<div class="layout-content">
+<div class="content-article">
+<div class="heading-3">
+<h3>The inaugural drop</h3>
+</div>
+<p class="article">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Scelerisque facilisis tellus mattis a tristique. Quam tellus nascetur at cursus sit lacinia massa etiam enim. Venenatis vestibulum luctus.</p>
+<br />
+<div class="heading-3">
+<h3>EXCLUSIVE EDITION</h3>
+</div>
+ 
+<p class="article">
+  
+<div class="product-list product-list--collection">   
+{% for product in collections.all.products %}   
+{% if product.tags contains "Exclusive Edition" %} 
+ {% include 'product-list-item' %}  
+{% endif %}
+{% endfor %}
+  </div> 
+  
+  
+  </p>
+<br />
+<div class="heading-3">
+<h3>COLLECTOR’S EDITION</h3>
+</div>
+<p class="article">[inventory here]</p>
+</div>
+<div class="content-article">
+<div class="heading-3">
+<h3>DROP details</h3>
+</div>
+<p class="article">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Scelerisque facilisis tellus mattis a tristique. Quam tellus nascetur at cursus sit lacinia massa etiam enim. Venenatis vestibulum luctus.</p>
+<br />
+<p class="article">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Scelerisque facilisis tellus mattis a tristique. Quam tellus nascetur at cursus sit lacinia massa etiam enim. Venenatis vestibulum luctus.</p>
+</div>
+</div>
+<br />
+<div class="latout_email_form">
+<div class="div-block-16">
+<div class="heading-3">
+<h3>TAKE YOUR FOMO PILL</h3>
+</div>
+<div class="div_form">
+<div class="form-block-1 w-form"><form id="wf-form-mc-embedded-subscribe-form" name="wf-form-mc-embedded-subscribe-form" data-name="mc-embedded-subscribe-form" action="https://apeeditions.us13.list-manage.com/subscribe/post?u=bc4c71ac44e0ce0f58a6c477e&amp;amp;id=40e03157a7" method="post" class="form" aria-label="mc-embedded-subscribe-form"><input type="email" class="email_input w-input" autocomplete="off" maxlength="256" name="EMAIL" data-name="EMAIL" placeholder="ENTER YOUR EMAIL" id="EMAIL" required="" /><input type="submit" value="SIGN UP" data-wait="Please wait..." class="buttonsubmit w-button" /></form>
+<div class="success-message w-form-done" style="display: none;" tabindex="-1" role="region" aria-label="mc-embedded-subscribe-form success">
+<div class="text-block-2">THANK YOU.</div>
+</div>
+<div class="error-message w-form-fail" style="display: none;" tabindex="-1" role="region" aria-label="mc-embedded-subscribe-form failure">
+<div class="text-block-3">Oops!  Something went wrong.<br />Please Try again.</div>
+</div>
+</div>
+</div>
+</div>
+</div>

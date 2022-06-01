@@ -123,9 +123,11 @@ blockquote:after, blockquote:before, q:after, q:before {
 body {
     line-height: 1;
     background-color: black;
+    /*
     background-image: url('https://cdn.shopify.com/s/files/1/0640/2788/5809/files/ae-background.jpg?v=1653707603');
     background-repeat: no-repeat;
     background-position: center;
+    */
     color: white;
     font-family: "Suisseintlmono webs", sans-serif;
     font-size: 16px;
@@ -922,7 +924,10 @@ checkmark_stamp {
 
 .layout-content-wrapper {
     padding-top: 100px;
-    padding-bottom: 100px
+    padding-bottom: 100px;
+    height: auto;
+    width: auto;
+    margin: auto;
 }
 
 .layout-content-wrapper.flush-top {
@@ -953,16 +958,33 @@ checkmark_stamp {
     */
 }
 
-.layout-content-wrapper {
-    height: auto;
-    width: auto;
-    margin: auto;
-}
 .layout-content{
     height: auto;
     width: auto;
     margin: auto;
 }
+
+.forefront-element .layout-content-wrapper {
+    -webkit-transform: translateZ(999px) scale(.7);
+    transform: translateZ(999px) scale(.7);
+    z-index: 1;
+}
+
+.base-element {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    z-index: 4;
+}
+
+.background-element {
+    -webkit-transform: translateZ(-999px) scale(2);
+    transform: translateZ(-999px) scale(2);
+    z-index: 3;
+    background-image: url('https://cdn.shopify.com/s/files/1/0640/2788/5809/files/ae-background.jpg?v=1653707603');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
 .content-article{
     height: auto;
     width: 560px;
