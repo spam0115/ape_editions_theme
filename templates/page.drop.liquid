@@ -38,7 +38,7 @@
                 <div class="product-list product-list--collection">
                     {% for product in collections.all.products %}
                         {% if product.tags contains  "Collector" and product.available == true %}
-                            {% render 'product-detail-form' %}
+                            {% render 'product-list-item' %}
                         {% endif %}
                     {% endfor %}
                 </div>
