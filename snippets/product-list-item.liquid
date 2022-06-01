@@ -65,6 +65,5 @@
       <span><strong>On Sale</strong> from {{ product.compare_at_price | money }}</span>
     {% endif %}
   </p>
-  {% if != sold_out %}<span>{% include 'collection-add-to-cart' %}</span>{% endif %}
   <p>{{ product.description | strip_html | truncatewords: 50 }}</p>
 </div>
