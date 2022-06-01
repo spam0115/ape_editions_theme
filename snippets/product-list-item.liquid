@@ -45,7 +45,7 @@
   </a>
 
   <a href="{{ product.url | within: collection }}">{{ product.title }}</a>
-  	 {% include 'collection-add-to-cart' %}
+
   
 
   
@@ -67,5 +67,6 @@
       <span><strong>On Sale</strong> from {{ product.compare_at_price | money }}</span>
     {% endif %}
   </p>
+  <p>  	 {% include 'collection-add-to-cart' %}</p>
   <p>{{ product.description | strip_html | truncatewords: 50 }}</p>
 </div>
