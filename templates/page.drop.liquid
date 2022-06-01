@@ -22,7 +22,7 @@
       <div class="product-list product-list--collection"> 
         {% for product in collections.all.products %}
         	{% if product.tags contains "Exclusive" and product.available == true %}
-        		{% render 'product-detail-form', product: product, current_variant: current_variant%}
+        		{% render 'product-list-item' %}
         	{% endif %} 
         {% endfor %} 
       </div>
