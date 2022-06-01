@@ -1,0 +1,10 @@
+<div id="st_cart_data_section" style="display: none">
+  {%- for item in cart.items -%}
+  <p
+    class="st_cart_discounts"
+    style="display: none"
+    data-shopthru-cart-variant="{{ item.variant_id }}"
+    data-shopthru-cart-quantity="{{ item.quantity }}"
+  ></p>
+  {%- endfor -%}
+</div>
