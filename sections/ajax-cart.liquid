@@ -1,3 +1,26 @@
+{% comment %}this detects if there are token gated items in the cart and sets the hasTokenGatedItem variable{% endcomment %}
+
+{% assign hasTokenGatedItem = false %}
+{% for item in cart.items %}
+
+  {% comment %} detect whether or not the item is token gated and set the isTokenGated variable {% endcomment %}
+  {% assign isTokenGated = false %}
+  {% for property in item.properties %}
+    {% if property.first == '_isTokenGated' and property.last == 'true' -%}
+      {% assign isTokenGated = true %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+
+  {% for property in item.properties %}
+    {% if property.first == '_isTokenGated' and property.last == 'true' -%}
+      {% assign hasTokenGatedItem = true %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+  {% if hasTokenGatedItem == true %}{% break %}{% endif %}
+{% endfor %}
+
 <div data-section-id="{{ section.id }}" data-section-type="ajax-cart">
   <div class="ajax-cart" data-ajax-cart>
     <form action="/cart" method="post" novalidate>
@@ -8,11 +31,15 @@
         <div class="ajax-cart__footer-row">
           Sub total: <span data-total-price></span>
         </div>
-        <div class="ajax-cart__footer-row">
-          <button type="submit" name="checkout" class="btn">
-            Checkout
-          </button>
-        </div>
+
+        {%- if hasTokenGatedItem != true -%}
+          <div class="ajax-cart__footer-row">
+            <button type="submit" name="checkout" class="btn">
+              Checkout
+            </button>
+          </div>
+        {%- endif -%}
+
       </div>     
     </form>
 
@@ -27,7 +54,85 @@
   </div>
 </div>
 
-{% schema %}
+
+<div class="cart__blocks">
+  {% for block in section.blocks %}
+    {%- case block.type -%}
+      {% comment %} tells shopify to render Manifold checkout widgets when the "Manifold Campaign Widget" Theme Block is used {% endcomment %}
+      {% comment %} insert this code under '{%- case block.type -%}' {% endcomment %}
+      {%- when 'manifold-checkout-widget' -%}
+        {%- if hasTokenGatedItem == true -%}
+          {%- render 'manifold-checkout-widget', settings: block.settings -%}
+        {%- endif %}
+      {%- when '@app' -%}
+        {% render block %}
+      {%- when 'subtotal' -%}
+        <div class="js-contents" {{ block.shopify_attributes }}>
+          <div class="totals">
+            <h2 class="totals__subtotal">{{ 'sections.cart.subtotal' | t }}</h2>
+            <p class="totals__subtotal-value">{{ cart.total_price | money_with_currency }}</p>
+          </div>
+
+          <div>
+            {%- if cart.cart_level_discount_applications.size > 0 -%}
+              <ul class="discounts list-unstyled" role="list" aria-label="{{ 'customer.order.discount' | t }}">
+                {%- for discount in cart.cart_level_discount_applications -%}
+                  <li class="discounts__discount discounts__discount--position">
+                    {%- render 'icon-discount' -%}
+                    {{ discount.title }}
+                    (-{{ discount.total_allocated_amount | money }})
+                  </li>
+                {%- endfor -%}
+              </ul>
+            {%- endif -%}
+          </div>
+
+          <small class="tax-note caption-large rte">
+            {%- if cart.taxes_included and shop.shipping_policy.body != blank -%}
+              {{ 'sections.cart.taxes_included_and_shipping_policy_html' | t: link: shop.shipping_policy.url }}
+            {%- elsif cart.taxes_included -%}
+              {{ 'sections.cart.taxes_included_but_shipping_at_checkout' | t }}
+            {%- elsif shop.shipping_policy.body != blank -%}
+              {{ 'sections.cart.taxes_and_shipping_policy_at_checkout_html' | t: link: shop.shipping_policy.url }}
+            {%- else -%}
+              {{ 'sections.cart.taxes_and_shipping_at_checkout' | t }}
+            {%- endif -%}
+          </small>
+        </div>
+      {%- else -%}
+
+        {% comment %} wrap the cart__ctas div and additional_checkout_buttons to ensure native Shopify buttons are only displayed if there are no token gated items {% endcomment %}
+        {% comment %} cart__ctas div and additional_checkout_buttons here {% endcomment %}
+        {%- if hasTokenGatedItem != true -%}
+          <div class="cart__ctas" {{ block.shopify_attributes }}>
+            <noscript>
+              <button type="submit" class="cart__update-button button button--secondary" form="cart">
+                {{ 'sections.cart.update' | t }}
+              </button>
+            </noscript>
+
+            <button type="submit" id="checkout" class="cart__checkout-button button" name="checkout"{% if cart == empty %} disabled{% endif %} form="cart">
+              {{ 'sections.cart.checkout' | t }}
+            </button>
+          </div>
+
+          
+          {%- if additional_checkout_buttons -%}
+            <div class="cart__dynamic-checkout-buttons additional-checkout-buttons">
+              {{ content_for_additional_checkout_buttons }}
+            </div>
+          {%- endif -%}
+
+        {%- endif -%}
+
+    {%- endcase -%}
+  {% endfor %}
+
+  <div id="cart-errors"></div>
+</div>
+
+    {% comment %} add Manifold Checkout Widget config to "blocks" schema section {% endcomment %}
+    {% schema %}
   {
     "name": "Ajax Cart",
     "settings": [
@@ -36,6 +141,13 @@
         "type": "richtext",
         "label": "Empty Text",
         "default": "<p>Cart Empty</p>"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "manifold-checkout-widget",
+        "name": "Manifold Checkout Widget",
+        "limit": 1
       }
     ]
   }
