@@ -1,3 +1,19 @@
 <div class="layout-content-wrapper">
   {% section 'product' %}
 </div>
+
+{% comment %} add Manifold Campaign Widget config to "blocks" schema section {% endcomment %}
+{% schema %}
+  {
+    "name": "Product Page",
+    "settings": [],
+    "blocks": [
+      {
+        "type": "manifold-campaign-widget",
+        "name": "Manifold Campaign Widget",
+        "limit": 1
+      }
+    ]
+    
+  }
+{% endschema %}
