@@ -1,0 +1,22 @@
+------------============ shopify cli notes =============-------------
+
+
+login:
+shopify login --store appeditions
+
+download a theme:
+shopify theme pull
+
+serve web page locally:
+shopify theme serve
+
+--------
+
+Passwords:
+
+Silver99! apeeditions@gmail.com account
+dawntu (for the store)
+
+----------
+
+shopthrough - nft app

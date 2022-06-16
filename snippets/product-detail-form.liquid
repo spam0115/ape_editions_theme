@@ -29,7 +29,7 @@
     {% render 'product-detail-gallery', product: product %}
 
     <div>
-      <p class="pdf-title">{{ product.title }}</p>
+      <h1 class="pdf-title">{{ product.title }}</h1>
 
       <div class="pdf-price">
         {% render 'product-detail-price',
@@ -123,8 +123,7 @@
 
             <input type="hidden" value="1" name="quantity" />
 
-{% render 'shopthru-product-form' %}
-<button
+            <button
               type="submit"
               name="add"
               class="btn"
@@ -134,8 +133,6 @@
                Add To Cart
               </span>
             </button>
-
-
           {% else %}
             <span>Sold out</span>
           {% endif %}

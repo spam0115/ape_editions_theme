@@ -9,7 +9,7 @@
     },
     "404": {
       "title": "404 Page Not Found",
-      "subtext_html": "The page you requested does not exist. Click <a href=\"\/collections\/all\">here<\/a> to continue shopping."
+      "subtext_html": "The page you requested does not exist. Click <a href=\"/collections/all\">here</a> to continue shopping."
     },
     "password_page": {
       "opening_soon": "Opening Soon",
@@ -23,7 +23,7 @@
       "signup_form_email_placeholder": "Your email",
       "signup_form_submit": "Submit",
       "signup_form_success": "We will send you an email right before we open!",
-      "admin_link_html": "Are you the store owner? <a href=\"\/admin\">Log in here<\/a>",
+      "admin_link_html": "Are you the store owner? <a href=\"/admin\">Log in here</a>",
       "password_link": "Enter using password",
       "powered_by_shopify_html": "This shop will be powered by {{ shopify }}"
     },
@@ -31,7 +31,7 @@
       "share_on_facebook": "Share",
       "share_on_twitter": "Tweet",
       "share_on_pinterest": "Pin it",
-      "share_on_tumblr": "Tumblr",
+      "share_on_tumblr": "Tumblr",      
       "share_on_email": "Email",
       "alt_text": {
         "share_on_facebook": "Share on Facebook",
@@ -91,9 +91,10 @@
       "view": "View Cart",
       "empty": "Your cart is currently empty.",
       "cookies_required": "Enable cookies to use the shopping cart",
-      "continue_browsing_html": "Continue browsing <a href=\"\/collections\/all\">here<\/a>.",
+      "continue_browsing_html": "Continue browsing <a href=\"/collections/all\">here</a>.",
       "item_quantity": "Item quantity",
-      "savings": "You're saving"
+      "savings": "You're saving",
+      "subtotal": "Subtotal"
     },
     "label": {
       "product": "Product",
@@ -153,7 +154,7 @@
       "city": "City",
       "country": "Country",
       "province": "Province",
-      "zip": "Postal\/Zip Code",
+      "zip": "Postal/Zip Code",
       "phone": "Phone",
       "set_default": "Set as default address",
       "add": "Add Address",
@@ -196,7 +197,7 @@
       "payment_status": "Payment Status",
       "shipping_address": "Shipping Address",
       "fulfillment_status": "Fulfillment Status",
-      "line_item_quantity": "Qty",
+      "line_item_quantity": "Qty",      
       "discount": "Discount",
       "shipping": "Shipping",
       "tax": "Tax",
@@ -307,7 +308,7 @@
       "initial_value": "Gift card value: {{ value }}"
     }
   },
-  "date_formats": {
+  "date_formats":{
     "month_day_year": "%B %d, %Y",
     "month_day": "%B %e"
   }

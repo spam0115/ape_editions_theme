@@ -2991,7 +2991,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var setViewportHeightProperty = function setViewportHeightProperty() {
   // If mobile / tablet, set var to window height. This fixes the 100vh iOS bug/feature.
   var v = window.innerWidth <= 1024 ? "".concat(window.innerHeight, "px") : '100vh';
-  //document.documentElement.style.setProperty('--viewport-height', v);
+  document.documentElement.style.setProperty('--viewport-height', v);
 };
 
 var $body = (0, _jquery.default)(document.body);

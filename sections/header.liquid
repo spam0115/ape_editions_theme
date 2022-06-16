@@ -6,14 +6,24 @@
   data-section-id="{{ section.id }}"
   data-section-type="header"
 >
+  <nav class="header-nav">
 
-<div class="div_header_cart">
+    {% if ll.links.size > 0 %}
+      <ul>
+        {% for link in ll.links %}
+          <li>
+            <a href="{{ link.url }}">
+              {{ link.title }}
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  </nav>  
+
   <a href="/" itemprop="url" title="{{ shop.name }}">
     {% render 'header-logo' %}
   </a>
-
-  <img src="https://cdn.shopify.com/s/files/1/0640/2788/5809/files/icon_search.svg?v=1654023035" alt="search" />
-  <img src="https://cdn.shopify.com/s/files/1/0640/2788/5809/files/icon_ape.svg?v=1654023035" alt="ape icon" />
 
   <a
     href="/cart"
@@ -21,45 +31,9 @@
     data-router-disabled
     data-ajax-cart-toggle
   >
-      <img src="https://cdn.shopify.com/s/files/1/0640/2788/5809/files/icon_shoppingbag.svg?v=1654023035" alt="shopping bag" />
       Cart <span data-cart-count>{{ cart.item_count }}</span>
   </a>
-</div>
-
-<!--
-<marquee direction="left">
-  <h1 class="header1" data-ix="move">APE EDITIONS APE EDITIONS APE EDITIONS</h1>
-</marquee>
--->
-
-<div class="div_header">
-    <div class="div_marquee_container marquee">
-      <span class="div_header1 marquee_swap_part">
-        <h1 class="heading1" data-ix="move">APE EDITIONS APE EDITIONS APE EDITIONS&nbsp;</h1>
-      </span>
-      <span class="div_header1">
-        <h1 class="heading1" data-ix="move">APE EDITIONS APE EDITIONS APE EDITIONS&nbsp;</h1>
-      </span>
-    </div>
-</div>
-
-<div class="div_subheader">
-  <div class="div_marquee_container2 marquee2">
-    <span class="div_subheader1 marquee_swap_part2">
-      <h2 class="heading2">&nbsp;CERTIFIED FINE ART PRINTS&nbsp;</h2><img src="https://cdn.shopify.com/s/files/1/0640/2788/5809/files/blue_checkmark.svg?v=1654116795" loading="lazy" alt="" class="checkmark_stamp">
-      <h2 class="heading2">&nbsp;CERTIFIED FINE ART PRINTS&nbsp;</h2><img src="https://cdn.shopify.com/s/files/1/0640/2788/5809/files/blue_checkmark.svg?v=1654116795" loading="lazy" alt="" class="checkmark_stamp">
-      <h2 class="heading2">&nbsp;CERTIFIED FINE ART PRINTS&nbsp;</h2><img src="https://cdn.shopify.com/s/files/1/0640/2788/5809/files/blue_checkmark.svg?v=1654116795" loading="lazy" alt="" class="checkmark_stamp">
-    </span>
-    <span class="div_subheader1">
-      <h2 class="heading2">&nbsp;CERTIFIED FINE ART PRINTS&nbsp;</h2><img src="https://cdn.shopify.com/s/files/1/0640/2788/5809/files/blue_checkmark.svg?v=1654116795" loading="lazy" alt="" class="checkmark_stamp">
-      <h2 class="heading2">&nbsp;CERTIFIED FINE ART PRINTS&nbsp;</h2><img src="https://cdn.shopify.com/s/files/1/0640/2788/5809/files/blue_checkmark.svg?v=1654116795" loading="lazy" alt="" class="checkmark_stamp">
-      <h2 class="heading2">&nbsp;CERTIFIED FINE ART PRINTS&nbsp;</h2><img src="https://cdn.shopify.com/s/files/1/0640/2788/5809/files/blue_checkmark.svg?v=1654116795" loading="lazy" alt="" class="checkmark_stamp">
-    </span>
-  </div>
-</div>
-
 </header>
-
 
 {% schema %}
   {
