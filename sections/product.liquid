@@ -16,64 +16,12 @@
   </div>
 </div>
 
-{% comment %} tells shopify to render Manifold add to cart widgets when the "Manifold Campaign Widget" Theme Block is used and when product type is "Manifold" {% endcomment %}
-{% comment %} insert this code under '{%- case block.type -%}' {% endcomment %}
-{%- for block in section.blocks -%}
-{%- case block.type -%}
-{%- when 'manifold-campaign-widget' -%}
-  {%- if product.type == "Manifold" -%}
-    {%- render 'manifold-campaign-widget', settings: block.settings -%}
-  {%- endif -%}
-{%- endfor -%}
-
-{% comment %} wrap the product-form_buttons div to ensure native Shopify buttons are only displayed if product is not type Manifold {% endcomment %}
-{% comment %} product-form_buttons div here {% endcomment %}
-{%- if product.type != "Manifold" -%}
-{%- form 'product', product, id: product_form_id, class: 'form', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
-<input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}" disabled>
-<div class="product-form__buttons">
-  <button
-    type="submit"
-    name="add"
-    class="product-form__submit button button--full-width {% if block.settings.show_dynamic_checkout and product.selling_plan_groups == empty %}button--secondary{% else %}button--primary{% endif %}"
-    {% if product.selected_or_first_available_variant.available == false %}disabled{% endif %}
-  >
-      <span>
-        {%- if product.selected_or_first_available_variant.available -%}
-          {{ 'products.product.add_to_cart' | t }}
-        {%- else -%}
-          {{ 'products.product.sold_out' | t }}
-        {%- endif -%}
-      </span>
-      <div class="loading-overlay__spinner hidden">
-        <svg aria-hidden="true" focusable="false" role="presentation" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
-          <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
-        </svg>
-      </div>
-  </button>
-  {%- if block.settings.show_dynamic_checkout -%}
-    {{ form | payment_button }}
-  {%- endif -%}
-</div>
-{%- endform -%}
-{%- endif -%}
-
-
-
-{% comment %} add Manifold Campaign Widget config to "blocks" schema section {% endcomment %}
 {% schema %}
   {
     "name": "Product Page",
-    "settings": [],
-    "blocks": [
-      {
-        "type": "manifold-campaign-widget",
-        "name": "Manifold Campaign Widget",
-        "limit": 1
-      }
-    ]
-    
+    "settings": []
   }
 {% endschema %}
+
 
 
